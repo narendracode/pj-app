@@ -7,7 +7,7 @@ import { InMemoryDataService }            from './in-memory-data.service';
 import { AppRoutingModule }               from './app-routing.module';
 import { AppComponent }                   from './app.component';
 import { BillDetailComponent }            from './bill-detail/bill-detail.component';
-import { BillsComponent }                from './bills/bills.component';
+import { BillsComponent }                 from './bills/bills.component';
 import { BillSearchComponent }            from './bill-search/bill-search.component';
 import { MessagesComponent }              from './messages/messages.component';
 import { BrowserAnimationsModule }        from '@angular/platform-browser/animations';
@@ -20,6 +20,8 @@ import { MatMenuModule}                   from '@angular/material/menu';
 import { MatTooltipModule}                from '@angular/material/tooltip';
 import { MatButtonModule}                 from '@angular/material/button';
 import { FlexLayoutModule }               from '@angular/flex-layout';
+import { MatFormFieldModule }             from '@angular/material/form-field';
+import { MatInputModule }                 from '@angular/material/input';
 
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -43,8 +45,8 @@ import { FooterComponent } from './footer/footer.component';
     MatMenuModule,
     MatTooltipModule,
     MatButtonModule,
-
-
+    MatFormFieldModule,
+    MatInputModule,
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.

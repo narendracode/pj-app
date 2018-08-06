@@ -1,11 +1,14 @@
 <h2>My Bills</h2>
 
 <div>
-  <label>Bill name:
-    <input #billDesc />
-  </label>
+
+  <mat-form-field>
+    <input matInput placeholder="Bill Name" #billDesc>
+  </mat-form-field>
+
+
   <!-- (click) passes input value to add() and then clears the input -->
-  <button (click)="add(billDesc.value); billDesc.value=''">
+  <button mat-raised-button color="accent" (click)="add(billDesc.value); billDesc.value=''">
     add
   </button>
 </div>
