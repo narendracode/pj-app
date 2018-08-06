@@ -1,27 +1,29 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { BillsComponent } from './bills.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
-describe('BillsComponent', () => {
-  let component: BillsComponent;
-  let fixture: ComponentFixture<BillsComponent>;
+import { BillSearchComponent } from './bill-search.component';
+
+
+describe('BillSearchComponent', () => {
+  let component: BillSearchComponent;
+  let fixture: ComponentFixture<BillSearchComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BillsComponent ],
-      imports: [RouterTestingModule.withRoutes([]), HttpClientTestingModule],
+      declarations: [ BillSearchComponent ],
+      imports: [RouterTestingModule.withRoutes([]), HttpClientTestingModule]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BillsComponent);
+    fixture = TestBed.createComponent(BillSearchComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should be created', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });

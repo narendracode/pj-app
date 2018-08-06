@@ -1,32 +1,17 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { NgModule }             from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 
-
+import { BillsComponent }      from './bills/bills.component';
+import { BillDetailComponent }  from './bill-detail/bill-detail.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    redirectTo: 'about',
-    pathMatch: 'full'
-  },
-  {
-    path: 'examples',
-    loadChildren: 'app/examples/examples.module#ExamplesModule'
-  },
-  {
-    path: '**',
-    redirectTo: 'about'
-  }
+  { path: '', redirectTo: '/', pathMatch: 'full' },
+  { path: 'detail/:id', component: BillDetailComponent },
+  { path: 'bills', component: BillsComponent }
 ];
 
 @NgModule({
-  // useHash supports github.io demo page, remove in your app
-  imports: [
-    RouterModule.forRoot(routes, {
-      useHash: false,
-      scrollPositionRestoration: 'enabled'
-    })
-  ],
-  exports: [RouterModule]
+  imports: [ RouterModule.forRoot(routes) ],
+  exports: [ RouterModule ]
 })
 export class AppRoutingModule {}

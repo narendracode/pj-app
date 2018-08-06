@@ -1,6 +1,21 @@
-<div *ngFor="let bill of bills"> 
-	<div class="row bill-row" >
-		<mat-card class="col-md-6">{{bill.id}}</mat-card> 
-		<mat-card class="col-md-6"> {{bill.desc}}</mat-card>
-	</div>
+<h2>My Bills</h2>
+
+<div>
+  <label>Bill name:
+    <input #billDesc />
+  </label>
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button (click)="add(billDesc.value); billDesc.value=''">
+    add
+  </button>
 </div>
+
+<ul class="bills">
+  <li *ngFor="let bill of bills">
+    <a routerLink="/detail/{{bill.id}}">
+      <span class="badge">{{bill.id}}</span> {{bill.name}}
+    </a>
+    <button class="delete" title="delete bill"
+      (click)="delete(bill)">x</button>
+  </li>
+</ul>
