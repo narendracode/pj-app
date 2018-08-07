@@ -33,6 +33,8 @@ import { MatExpansionModule }              from '@angular/material/expansion';
 import { MatAutocompleteModule }           from '@angular/material/autocomplete';
 import { HeaderComponent }                from './header/header.component';
 import { FooterComponent }                from './footer/footer.component';
+import { BillNewComponent } from './bill-new/bill-new.component';
+
 
 
 @NgModule({
@@ -81,6 +83,7 @@ import { FooterComponent }                from './footer/footer.component';
 
     HeaderComponent,
     FooterComponent,
+    BillNewComponent
   ],
   bootstrap: [ AppComponent ]
 })

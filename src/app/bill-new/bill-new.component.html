@@ -1,0 +1,60 @@
+<div class="container" [hidden]="submitted">
+	<div class="row">
+	    <div class="col-sm-12">
+	      <h2>Create new purchase record</h2>
+	    </div>
+    </div>
+
+    <form (ngSubmit)="onSubmit()" #newBillForm="ngForm">
+      <div class="row"> <!-- form fields start -->
+          <div class="col-md-6">
+          	<mat-form-field>
+              	<input [(ngModel)]="model.id" name="id" matInput placeholder="Bill Id" #billId>
+            	</mat-form-field>
+        	</div>
+
+        	<div class="col-md-6">
+             	<mat-form-field>
+              	<input [(ngModel)]="model.fullName" name="fullName" matInput placeholder="Full Name" #fullName>
+            	</mat-form-field>
+        	</div>
+
+        	<div class="col-md-6">
+             	<mat-form-field>
+              	<input [(ngModel)]="model.desc" name="desc" matInput placeholder="Bill Description" #billDesc>
+            	</mat-form-field>
+        	</div>
+
+        	<div class="col-md-6">
+             	<mat-form-field>
+              	<input [(ngModel)]="model.totalAmount" name="totalAmount" matInput placeholder="Total Amount" #billAmount>
+            	</mat-form-field>
+        	</div>
+
+        	<div class="col-md-6">
+             	<mat-form-field>
+              	<input [(ngModel)]="model.discount" name="discount" matInput placeholder="Discount" #discount>
+            	</mat-form-field>
+        	</div>
+
+        	<div class="col-md-6">
+             	<mat-form-field>
+              	<input [(ngModel)]="model.tax" name="tax" matInput placeholder="Tax" #tax>
+            	</mat-form-field>
+        	</div>
+      </div><!-- form fields end -->
+
+	  <div class="row"><!-- buttons start -->
+	    <div class="col-md-2">
+	        <button type="submit" mat-raised-button color="primary" >
+	          Add
+	        </button>
+	    </div>
+	    <div class="col-md-2">
+	        <button type="button" mat-raised-button color="accent" (click)="newBill(); newBillForm.reset()">
+	          Reset
+	        </button>
+	    </div>
+	  </div> <!-- buttons end -->
+  </form>
+</div>

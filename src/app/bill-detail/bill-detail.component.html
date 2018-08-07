@@ -1,9 +1,9 @@
 <div *ngIf="bill">
-  <h2>{{bill.name | uppercase}} Details</h2>
+  <h2>{{bill.fullName | uppercase}} Details</h2>
   <div><span>id: </span>{{bill.id}}</div>
   <div>
     <label>name:
-      <input [(ngModel)]="bill.name" placeholder="name"/>
+      <input [(ngModel)]="bill.fullName" placeholder="name"/>
     </label>
   </div>
   <button (click)="goBack()">go back</button>

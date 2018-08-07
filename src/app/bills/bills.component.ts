@@ -23,11 +23,18 @@ export class BillsComponent implements OnInit {
   }
 
   add(name: string): void {
-    name = name.trim();
+    const fullName = name.trim();
+    const desc = '';
+    const id = 0;
+    const totalAmount = 0;
+    const discount = 0;
+    const tax = 0;
+
+
     if (!name) { return; }
-    this.billService.addBill({ name } as Bill)
-      .subscribe(hero => {
-        this.bills.push(hero);
+    this.billService.addBill( new Bill(id,desc,fullName,totalAmount,discount,tax ) as Bill)
+      .subscribe(bill => {
+        this.bills.push(bill);
       });
   }
 

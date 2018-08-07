@@ -67,28 +67,35 @@ export class BillService {
   //////// Save methods //////////
 
   /** POST: add a new Bill to the server */
-  addBill (Bill: Bill): Observable<Bill> {
-    return this.http.post<Bill>(this.billsUrl, Bill, httpOptions).pipe(
-      tap((Bill: Bill) => this.log(`added Bill w/ id=${Bill.id}`)),
-      catchError(this.handleError<Bill>('addBill'))
+  addBill (bill: Bill): Observable<Bill> {
+       /*console.log('Bill Details from add Bill '+ bill.fullName + ' , ' +
+                                bill.desc + ' , ' + 
+                                bill.discount +  '  , ' + 
+                                bill.id +  '  , ' +
+                                bill.tax +  '  , ' +
+                                bill.totalAmount
+                );*/
+      return this.http.post<Bill>(this.billsUrl, bill, httpOptions).pipe(
+        tap((bill: Bill) => this.log(`added Bill w/ id=${bill.id},   fullName=${bill.fullName} `)),
+        catchError(this.handleError<Bill>('addBill'))
     );
   }
 
   /** DELETE: delete the Bill from the server */
-  deleteBill (Bill: Bill | number): Observable<Bill> {
-    const id = typeof Bill === 'number' ? Bill : Bill.id;
+  deleteBill (bill: Bill ): Observable<Bill> {
+    const id = bill.id;
     const url = `${this.billsUrl}/${id}`;
 
     return this.http.delete<Bill>(url, httpOptions).pipe(
-      tap(_ => this.log(`deleted Bill id=${id}`)),
+      tap(_ => this.log(`deleted bill id=${id}`)),
       catchError(this.handleError<Bill>('deleteBill'))
     );
   }
 
   /** PUT: update the Bill on the server */
-  updateBill (Bill: Bill): Observable<any> {
-    return this.http.put(this.billsUrl, Bill, httpOptions).pipe(
-      tap(_ => this.log(`updated Bill id=${Bill.id}`)),
+  updateBill (bill: Bill): Observable<any> {
+    return this.http.put(this.billsUrl, bill, httpOptions).pipe(
+      tap(_ => this.log(`updated bill id=${bill.id}`)),
       catchError(this.handleError<any>('updateBill'))
     );
   }
