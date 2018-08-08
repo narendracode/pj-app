@@ -28,7 +28,9 @@
           <p>
             Sample lorem ipsum purchase description...
           </p>
-          {{bill.fullName}}
+          <div>
+            Bill id : {{bill.id}}
+          </div>
         </mat-card-content>
         <mat-card-actions>
           <button mat-button routerLink="/detail/{{bill.id}}">View</button>

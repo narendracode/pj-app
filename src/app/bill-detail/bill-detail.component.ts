@@ -25,6 +25,7 @@ export class BillDetailComponent implements OnInit {
 
   getBill(): void {
     const id = +this.route.snapshot.paramMap.get('id');
+    console.log('Load bill id : '+id);
     this.billService.getBill(id)
       .subscribe(bill => this.bill = bill);
   }

@@ -46,8 +46,14 @@ export class BillService {
   /** GET Bill by id. Will 404 if id not found */
   getBill(id: number): Observable<Bill> {
     const url = `${this.billsUrl}/${id}`;
+    console.log('inside bill service  url : '+url);
+
     return this.http.get<Bill>(url).pipe(
-      tap(_ => this.log(`fetched Bill id=${id}`)),
+      tap(_ => {
+        console.log('Test inside get Bill...');
+        this.log(`fetched Bill id=${id}`)
+
+      }),
       catchError(this.handleError<Bill>(`getBill id=${id}`))
     );
   }
@@ -73,8 +79,17 @@ export class BillService {
                                 bill.discount +  '  , ' + 
                                 bill.id +  '  , ' +
                                 bill.tax +  '  , ' +
-                                bill.totalAmount
-                );*/
+                                bill.totalAmount,+  '  ,  Total Number 0f items : ' +
+                                bill.items.length
+                );
+
+*/
+
+       console.log('Bill items : '+JSON.stringify(bill));
+
+
+    console.log('inside addBill bill service : '+JSON.stringify(bill));
+
       return this.http.post<Bill>(this.billsUrl, bill, httpOptions).pipe(
         tap((bill: Bill) => this.log(`added Bill w/ id=${bill.id},   fullName=${bill.fullName} `)),
         catchError(this.handleError<Bill>('addBill'))
