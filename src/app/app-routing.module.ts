@@ -4,10 +4,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { BillsComponent }       from './bills/bills.component';
 import { BillDetailComponent }  from './bill-detail/bill-detail.component';
 import { BillNewComponent }     from './bill-new/bill-new.component';
+import { BillEditComponent }    from './bill-edit/bill-edit.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' },
   { path: 'detail/:id', component: BillDetailComponent },
+  { path: 'edit/:id', component: BillEditComponent },
   { path: 'bills', component: BillsComponent },
   { path: 'new', component: BillNewComponent }
 ];

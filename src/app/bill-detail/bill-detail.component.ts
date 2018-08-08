@@ -34,8 +34,5 @@ export class BillDetailComponent implements OnInit {
     this.location.back();
   }
 
- save(): void {
-    this.billService.updateBill(this.bill)
-      .subscribe(() => this.goBack());
-  }
+
 }

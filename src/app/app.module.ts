@@ -34,6 +34,7 @@ import { MatAutocompleteModule }           from '@angular/material/autocomplete'
 import { HeaderComponent }                from './header/header.component';
 import { FooterComponent }                from './footer/footer.component';
 import { BillNewComponent } from './bill-new/bill-new.component';
+import { BillEditComponent } from './bill-edit/bill-edit.component';
 
 
 
@@ -87,7 +88,8 @@ import { BillNewComponent } from './bill-new/bill-new.component';
 
     HeaderComponent,
     FooterComponent,
-    BillNewComponent
+    BillNewComponent,
+    BillEditComponent
   ],
   bootstrap: [ AppComponent ]
 })

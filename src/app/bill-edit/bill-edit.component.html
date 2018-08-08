@@ -1,0 +1,127 @@
+<div class="container margin-top-10">
+  <div class="row">
+  	<button mat-raised-button color="accent" (click)="goBack()"> < Back</button>
+  </div>
+</div>
+<div class="container margin-top-10">
+  <div class="row">
+	<form (ngSubmit)="onSubmit()" #newEditForm="ngForm" *ngIf="model">
+	      <div class="row"> <!-- form fields start -->
+	          	<div class="col-md-6">
+	              	#{{model.id}}
+	        	</div> 
+
+	        	<div class="col-md-6">
+	             	<mat-form-field>
+	              	<input [(ngModel)]="model.fullName" name="fullName" matInput placeholder="Full Name" #fullName>
+	            	</mat-form-field>
+	        	</div>
+
+	        	<div class="col-md-6">
+	             	<mat-form-field>
+	              	<input [(ngModel)]="model.desc" name="desc" matInput placeholder="Bill Description" #billDesc>
+	            	</mat-form-field>
+	        	</div>
+
+	        	<div class="col-md-6">
+	             	<mat-form-field>
+	              	<input [(ngModel)]="model.totalAmount" name="totalAmount" matInput placeholder="Total Amount" #billAmount>
+	            	</mat-form-field>
+	        	</div>
+
+	        	<div class="col-md-6">
+	             	<mat-form-field>
+	              	<input [(ngModel)]="model.discount" name="discount" matInput placeholder="Discount" #discount>
+	            	</mat-form-field>
+	        	</div>
+
+	        	<div class="col-md-6">
+	             	<mat-form-field>
+	              	<input [(ngModel)]="model.tax" name="tax" matInput placeholder="Tax" #tax>
+	            	</mat-form-field>
+	        	</div>
+	      </div><!-- form fields end -->
+
+	      <div class="row" *ngFor="let item of items">
+	       <div class="col-md-12">
+	          <mat-card class="item-card" >
+	            <mat-card-header>
+	              <mat-card-title>{{item.desc | uppercase }}</mat-card-title>
+	              <mat-card-subtitle>{{item.carat}} Carat, {{item.weight}} grams</mat-card-subtitle>
+	            </mat-card-header>
+	            <mat-card-content>
+	              <div>
+	                Quantity : {{item.quantity}}
+	              </div>
+	              <div>
+	                Making Charge : {{item.makingCharge}}
+	              </div>
+	              <div>
+	                Total Amount : {{item.totalAmount}}
+	              </div>
+	            </mat-card-content>
+	            <mat-card-actions>
+	              <button mat-button (click)="deleteItem(item)">Delete</button>
+	            </mat-card-actions>
+	          </mat-card>
+	        </div>
+	      </div>
+
+
+	      <div class="row">
+	        <div class="col-sm-12">
+	          <h3>Add Item</h3>
+	          <mat-divider></mat-divider>
+	        </div>
+	        <div class="col-md-6">
+	              <mat-form-field>
+	                <input [(ngModel)]="item.desc" name="itemDesc" matInput placeholder="Item Description" #itemDesc>
+	              </mat-form-field>
+	        </div>
+
+	        <div class="col-md-6">
+	              <mat-form-field>
+	                <input [(ngModel)]="item.weight" name="itemWeight" matInput placeholder="Weight" #itemWeight>
+	              </mat-form-field>
+	        </div>
+
+	        <div class="col-md-6">
+	              <mat-form-field>
+	                <input [(ngModel)]="item.quantity" name="itemQuantity" matInput placeholder="Quantity" #itemQuantity>
+	              </mat-form-field>
+	        </div>
+
+	        <div class="col-md-6">
+	              <mat-form-field>
+	                <input [(ngModel)]="item.carat" name="itemCarat" matInput placeholder="Carat" #itemCarat>
+	              </mat-form-field>
+	        </div>
+
+	        <div class="col-md-6">
+	              <mat-form-field>
+	                <input [(ngModel)]="item.makingCharge" name="itemMakingCharge" matInput placeholder="Making Charge" #itemQuantity>
+	              </mat-form-field>
+	        </div>
+	      </div>
+	      <div class="row">
+	        <div class="col-sm-12">
+	          <button type="button" mat-fab color="primary" (click)="addItem();">Add</button>
+	        </div>
+	      </div>
+
+	    <mat-divider></mat-divider>
+		  <div class="row margin-top-10"><!-- buttons start -->
+		    <div class="col-md-2">
+		        <button type="submit" mat-raised-button color="primary" >
+		          Save
+		        </button>
+		    </div>
+		    <div class="col-md-2">
+		        <button type="button" mat-raised-button color="accent" (click)="newBill(); newBillForm.reset()">
+		          Reset
+		        </button>
+		    </div>
+		  </div> <!-- buttons end -->
+	  </form>
+  </div>
+</div>
