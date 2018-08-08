@@ -25,10 +25,6 @@ export class BillNewComponent implements OnInit {
                                 this.model.totalAmount
                 );
     
-
-
-
-
     this.billService.addBill(this.model)
       .subscribe(bill => {
          console.log('new Bill added...');
