@@ -6,12 +6,15 @@ import { BillDetailComponent }  from './bill-detail/bill-detail.component';
 import { BillNewComponent }     from './bill-new/bill-new.component';
 import { BillEditComponent }    from './bill-edit/bill-edit.component';
 
+import { ReceiptComponent }    from './receipt/receipt.component';
+
 const routes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' },
   { path: 'detail/:id', component: BillDetailComponent },
   { path: 'edit/:id', component: BillEditComponent },
   { path: 'bills', component: BillsComponent },
-  { path: 'new', component: BillNewComponent }
+  { path: 'new', component: BillNewComponent },
+  { path: 'receipt/:id', component: ReceiptComponent }
 ];
 
 @NgModule({

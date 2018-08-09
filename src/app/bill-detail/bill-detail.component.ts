@@ -34,5 +34,9 @@ export class BillDetailComponent implements OnInit {
     this.location.back();
   }
 
+  generateReceipt(): void {
+    console.log('Generate Receipt is called...');
+  }
+
 
 }

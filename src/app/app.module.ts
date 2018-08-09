@@ -35,6 +35,7 @@ import { HeaderComponent }                from './header/header.component';
 import { FooterComponent }                from './footer/footer.component';
 import { BillNewComponent } from './bill-new/bill-new.component';
 import { BillEditComponent } from './bill-edit/bill-edit.component';
+import { ReceiptComponent } from './receipt/receipt.component';
 
 
 
@@ -89,7 +90,8 @@ import { BillEditComponent } from './bill-edit/bill-edit.component';
     HeaderComponent,
     FooterComponent,
     BillNewComponent,
-    BillEditComponent
+    BillEditComponent,
+    ReceiptComponent
   ],
   bootstrap: [ AppComponent ]
 })
