@@ -1,0 +1,125 @@
+#receipt-container{
+	border-color:black;
+}
+
+
+.jewellery-thumbnail{
+    height: 70px;
+    margin-top: 34px;
+    border : none;
+} 
+.jewellery-thumbnail.jewellery-thumbnail-left{
+	margin-left: 30px;
+}
+
+.jewellery-thumbnail.jewellery-thumbnail-right{
+	//margin-left: 30px;
+}
+
+
+.invoice-header{
+	font-family : American Typewriter, serif;
+	text-align : center;
+	margin-top: 5px;
+}
+
+.invoice-header .header1{
+	font-size: 3em;
+}
+
+.invoice-header .header2{
+	font-size: 1.5em;
+}
+
+.invoice-header2{
+
+}
+
+.invoice{
+	margin-top: 5px;
+	text-color: white;
+	font-size: 1.5em;
+	background-color: grey;
+	float:right;
+	text-align: center;
+}
+
+.address{
+	font-family : monospace;
+	font-size: 1em;
+}
+
+.shop-address{
+	font-family : monospace;
+	font-size: 1.5em;
+}
+
+.buyer{
+	font-family : monospace;
+}
+
+.buyer .buyer-header{
+	font-size: 1.5em;
+}
+
+.buyer .buyer-name{
+	font-size: 1em;
+}
+
+.date{
+	font-family : monospace;
+	font-size: 1em;
+}
+
+.invoiceId{
+	font-family : monospace;
+	font-size: 1em;
+}
+
+.table-header{
+	font-family : Helvetica, sans-serif;
+	font-size: 0.8em;
+	text-align:center;
+}
+
+.table-content{
+	font-family : monospace;
+	font-size: 1em;
+}
+
+.invoice-item-title{
+	font-family : Helvetica, sans-serif;
+	font-size: 1.2em;
+}
+
+.invoice-item-desc{
+	font-family : monospace;
+	font-size: 1em;
+}
+
+.signature-left{
+	float:left;
+}
+
+.signature-right{
+	float:right;
+}
+
+.signature-text{
+	float:clear;
+} 
+.signature-text.signature-text-left{
+	float:left;
+}
+
+.signature-text.signature-text-right{
+	float:right;
+}
+
+.table th{
+	text-align: left;
+}
+
+.table td{
+	text-align: left;
+}
