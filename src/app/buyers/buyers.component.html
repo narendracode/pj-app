@@ -1,0 +1,42 @@
+<div class="container"><!-- container start -->
+  <div class="row">
+    <div class="col-sm-12">
+      <h2>Buyers</h2>
+    </div>
+  </div>
+
+  <div class="row horizontal-spacing">
+    <div class="col-sm-12">
+          <button mat-raised-button color="accent" routerLink="/new" >
+            New
+          </button>
+    </div>
+  </div>
+</div> <!-- container end -->
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6" *ngFor="let buyer of buyers">
+      <mat-card class="bill-card" >
+        <mat-card-header>
+          <mat-card-title>{{buyer.firstName}} {{buyer.middleName}} {{buyer.lastName}} </mat-card-title>
+          <mat-card-subtitle>7th July 2018</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p>
+            Sample lorem ipsum purchase description...
+          </p>
+          <div>
+            Buyer id : {{buyer.id}}
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button routerLink="/detail/{{buyer.id}}">View</button>
+          <button mat-button routerLink="/edit/{{buyer.id}}">Edit</button>
+          <button mat-button (click)="delete(buyer.id)">Delete</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>

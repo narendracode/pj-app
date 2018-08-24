@@ -38,7 +38,7 @@ import { FooterComponent }                from './footer/footer.component';
 import { BillNewComponent }               from './bill-new/bill-new.component';
 import { BillEditComponent }              from './bill-edit/bill-edit.component';
 import { ReceiptComponent }               from './receipt/receipt.component';
-
+import { BuyersComponent }               from './buyers/buyers.component';
 
 
 @NgModule({
@@ -76,9 +76,9 @@ import { ReceiptComponent }               from './receipt/receipt.component';
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false }
-    )
+   // HttpClientInMemoryWebApiModule.forRoot(
+     // InMemoryDataService, { dataEncapsulation: false }
+    //)
     
   ],
   declarations: [
@@ -93,7 +93,8 @@ import { ReceiptComponent }               from './receipt/receipt.component';
     FooterComponent,
     BillNewComponent,
     BillEditComponent,
-    ReceiptComponent
+    ReceiptComponent,
+    BuyersComponent
   ],
   bootstrap: [ AppComponent ]
 })
