@@ -26,11 +26,31 @@ export class BuyerService {
       .pipe(
         tap(buyers =>  { 
             this.log('fetched buyers');
-            console.log("Fetched buyers result : "+JSON.stringify(buyers));
           }),
         catchError(this.handleError('getbuyers', []))
       );
   }
+
+
+
+  addBuyer (buyer: Buyer): Observable<Buyer> {
+      return this.http.post<Buyer>(this.buyerAPIUrl, buyer, httpOptions).pipe(
+        tap((buyer: Buyer) => { 
+                                this.log(`added Buyer w/ id=${buyer.id},   fullName=${buyer.firstName} `);
+                              }
+         ),
+        catchError(this.handleError<Buyer>('addBuyer'))
+    );
+  }
+
+  deleteBuyer(id: string): Observable<{}> {
+     const url = this.buyerAPIUrl + '/'+id;
+     return this.http.delete(url, httpOptions)
+      .pipe(
+        catchError(this.handleError('deleteBuyer'))
+      );
+  }
+
 
 
   /**

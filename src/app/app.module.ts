@@ -39,6 +39,9 @@ import { BillNewComponent }               from './bill-new/bill-new.component';
 import { BillEditComponent }              from './bill-edit/bill-edit.component';
 import { ReceiptComponent }               from './receipt/receipt.component';
 import { BuyersComponent }               from './buyers/buyers.component';
+import { BuyerNewComponent } from './buyer-new/buyer-new.component';
+import { BuyerDetailComponent } from './buyer-detail/buyer-detail.component';
+import { BuyerEditComponent } from './buyer-edit/buyer-edit.component';
 
 
 @NgModule({
@@ -94,7 +97,10 @@ import { BuyersComponent }               from './buyers/buyers.component';
     BillNewComponent,
     BillEditComponent,
     ReceiptComponent,
-    BuyersComponent
+    BuyersComponent,
+    BuyerNewComponent,
+    BuyerDetailComponent,
+    BuyerEditComponent
   ],
   bootstrap: [ AppComponent ]
 })

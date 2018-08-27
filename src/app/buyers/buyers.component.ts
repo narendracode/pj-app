@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { Buyer } from '../buyer';
 import { BuyerService } from '../buyer.service';
 
@@ -16,17 +15,19 @@ export class BuyersComponent implements OnInit {
   constructor(private buyerService: BuyerService) { }
 
   ngOnInit() {
-    console.log('before calling get buyers');
   	this.getBuyers();
-    console.log('after calling get buyers');
   }
 
   getBuyers() : void {
   	this.buyerService.getBuyers()
   		.subscribe(buyers => {
   								this.buyers = buyers;
-  								console.log('got the buyers : '+ JSON.stringify(buyers));
   							});
+  }
+
+  delete(buyer: Buyer): void {
+    this.buyers = this.buyers.filter(h => h !== buyer);
+    this.buyerService.deleteBuyer(buyer.id).subscribe();
   }
 
 }

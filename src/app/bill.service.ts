@@ -74,22 +74,6 @@ export class BillService {
 
   /** POST: add a new Bill to the server */
   addBill (bill: Bill): Observable<Bill> {
-       /*console.log('Bill Details from add Bill '+ bill.fullName + ' , ' +
-                                bill.desc + ' , ' + 
-                                bill.discount +  '  , ' + 
-                                bill.id +  '  , ' +
-                                bill.tax +  '  , ' +
-                                bill.totalAmount,+  '  ,  Total Number 0f items : ' +
-                                bill.items.length
-                );
-
-*/
-
-       console.log('Bill items : '+JSON.stringify(bill));
-
-
-    console.log('inside addBill bill service : '+JSON.stringify(bill));
-
       return this.http.post<Bill>(this.billsUrl, bill, httpOptions).pipe(
         tap((bill: Bill) => this.log(`added Bill w/ id=${bill.id},   fullName=${bill.fullName} `)),
         catchError(this.handleError<Bill>('addBill'))

@@ -18,8 +18,7 @@ export class Buyer {
   company: string,
   address: string,
   phone: string,
-  email: string,
-  status: number
+  email: string
   ){  }
 
 }

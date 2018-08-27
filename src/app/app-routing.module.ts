@@ -8,6 +8,10 @@ import { BillEditComponent }    from './bill-edit/bill-edit.component';
 
 import { ReceiptComponent }    from './receipt/receipt.component';
 import { BuyersComponent }    from './buyers/buyers.component';
+import { BuyerNewComponent }  from './buyer-new/buyer-new.component';
+import { BuyerDetailComponent } from './buyer-detail/buyer-detail.component';
+
+import { BuyerEditComponent }   from './buyer-edit/buyer-edit.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' },
@@ -16,7 +20,10 @@ const routes: Routes = [
   { path: 'bills', component: BillsComponent },
   { path: 'buyers', component: BuyersComponent },
   { path: 'new', component: BillNewComponent },
-  { path: 'receipt/:id', component: ReceiptComponent }
+  { path: 'receipt/:id', component: ReceiptComponent },
+  { path: 'buyer/new', component: BuyerNewComponent },
+  { path: 'buyer/:id', component: BuyerDetailComponent },
+  { path: 'buyer/edit/:id', component: BuyerEditComponent }
 ];
 
 @NgModule({
