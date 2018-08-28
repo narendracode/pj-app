@@ -1,3 +1,60 @@
-<p>
-  buyer-edit works!
-</p>
+<div class="container" [hidden]="submitted">
+	<div class="row">
+	    <div class="col-sm-12">
+	      <h2>Edit Buyer</h2>
+        <mat-divider></mat-divider>
+	    </div>
+    </div>
+
+    <form (ngSubmit)="onSubmit()" #editBuyerForm="ngForm" *ngIf="model">
+      <div class="row"> <!-- form fields start -->
+        	<div class="col-md-6">
+             	<mat-form-field>
+              	<input [(ngModel)]="model.firstName" name="firstName" matInput placeholder="First Name" #firstName>
+
+            	</mat-form-field>
+        	</div>
+          <div class="col-md-6">
+              <mat-form-field>
+                <input [(ngModel)]="model.middleName" name="middleName" matInput placeholder="Middle Name" #middleName>
+              </mat-form-field>
+          </div>
+          <div class="col-md-6">
+              <mat-form-field>
+                <input [(ngModel)]="model.lastName" name="lastName" matInput placeholder="Last Name" #lastName>
+              </mat-form-field>
+          </div>
+        	<div class="col-md-6">
+             	<mat-form-field>
+              	<input [(ngModel)]="model.company" name="company" matInput placeholder="Company" #company>
+            	</mat-form-field>
+        	</div>
+          <div class="col-md-6">
+              <mat-form-field>
+                <input [(ngModel)]="model.address" name="address" matInput placeholder="Address" #address>
+              </mat-form-field>
+          </div>
+          <div class="col-md-6">
+              <mat-form-field>
+                <input [(ngModel)]="model.phone" name="phone" matInput placeholder="Phone" #phone>
+              </mat-form-field>
+          </div>
+          <div class="col-md-6">
+              <mat-form-field>
+                <input [(ngModel)]="model.email" name="email" matInput placeholder="Email" #email>
+              </mat-form-field>
+          </div>
+      </div><!-- form fields end -->
+
+
+    <mat-divider></mat-divider>
+	  <div class="row margin-top-10"><!-- buttons start -->
+	    <div class="col-md-2">
+	        <button type="submit" mat-raised-button color="primary" >
+	          Save
+	        </button>
+	    </div>
+	  </div> <!-- buttons end -->
+  </form>
+</div>
+

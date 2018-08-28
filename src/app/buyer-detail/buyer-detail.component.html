@@ -1,3 +1,47 @@
-<p>
-  buyer-detail works!
-</p>
+<div class="container" [hidden]="submitted">
+	<div class="row">
+	    <div class="col-sm-12">
+	      <h2>Buyer Details</h2>
+        <mat-divider></mat-divider>
+	    </div>
+    </div>
+
+	<div class="row" *ngIf="model"> <!-- form fields start -->
+	    <div class="col-md-6">
+         	<mat-form-field>
+          	<input [(ngModel)]="model.firstName" name="firstName" matInput placeholder="First Name" #firstName>
+        	</mat-form-field>
+	    </div>
+	    <div class="col-md-6">
+	        <mat-form-field>
+	           <input [(ngModel)]="model.middleName" name="middleName" matInput placeholder="Middle Name" #middleName>
+	        </mat-form-field>
+	    </div>
+	    <div class="col-md-6">
+	        <mat-form-field>
+	           	<input [(ngModel)]="model.lastName" name="lastName" matInput placeholder="Last Name" #lastName>
+	        </mat-form-field>
+	    </div>
+	    <div class="col-md-6">
+	        <mat-form-field>
+	          	<input [(ngModel)]="model.company" name="company" matInput placeholder="Company" #company>
+	        </mat-form-field>
+	    </div>
+	    <div class="col-md-6">
+	        <mat-form-field>
+	            <input [(ngModel)]="model.address" name="address" matInput placeholder="Address" #address>
+	        </mat-form-field>
+	    </div>
+	    <div class="col-md-6">
+	        <mat-form-field>
+	            <input [(ngModel)]="model.phone" name="phone" matInput placeholder="Phone" #phone>
+	        </mat-form-field>
+	    </div>
+	    <div class="col-md-6">
+	        <mat-form-field>
+	            <input [(ngModel)]="model.email" name="email" matInput placeholder="Email" #email>
+	        </mat-form-field>
+	    </div>
+	</div><!-- form fields end -->
+</div>
+

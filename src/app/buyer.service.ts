@@ -51,6 +51,26 @@ export class BuyerService {
       );
   }
 
+  getBuyer(id: string): Observable<Buyer> {
+    const url = `${this.buyerAPIUrl}/${id}`;
+    console.log('inside buyer service  url : '+url);
+    return this.http.get<Buyer>(url).pipe(
+      tap(_ => {
+        console.log('Test inside get Buyer...');
+        this.log(`fetched Buyer id=${id}`)
+      }),
+      catchError(this.handleError<Buyer>(`getBuyer id=${id}`))
+    );
+  }
+
+
+  /** PUT: update the Bill on the server */
+  updateBuyer (buyer: Buyer): Observable<any> {
+    return this.http.put(this.buyerAPIUrl, buyer, httpOptions).pipe(
+      tap(_ => this.log(`updated bill id=${buyer.id}`)),
+      catchError(this.handleError<any>('updateBuyer'))
+    );
+  }
 
 
   /**
