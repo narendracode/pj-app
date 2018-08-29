@@ -13,33 +13,19 @@ export class BillNewComponent implements OnInit {
 
   constructor(private billService: BillService) { }
 
-  model = new Bill(	0, '', '', 5, 5, 1,[]);
+  model = new Bill( '', '', [], 0, 0, 0);
   items = new Array<Item>();
   item = new Item('',0,1,24,0);
 
   submitted = false;
   onSubmit() { 
   	//this.submitted = true; 
-  	
-    console.log('Bill Details from on Submit '+ this.model.fullName + ' , ' +
-                                this.model.desc + ' , ' + 
-                                this.model.discount +  '  , ' + 
-                                this.model.id +  '  , ' +
-                                this.model.tax +  '  , ' +
-                                this.model.totalAmount
-                );
-    
     this.model.items = this.items;
-
-
-    console.log('Total items before add : ' + this.model.items.length);
-
     this.billService.addBill(this.model)
       .subscribe(bill => {
          console.log('new Bill added... with total items '+bill.items.length + '   , id : '+bill.id);
          this.reset();
       });
-
   }//onSubmit
 
 
@@ -52,7 +38,6 @@ export class BillNewComponent implements OnInit {
 
 
   addItem(){
-    console.log('Add item is called..');
     this.items.push(this.item);
     this.resetItem();
   }
@@ -65,7 +50,7 @@ export class BillNewComponent implements OnInit {
   }
 
   resetModel(){
-    this.model = new Bill(  0, '', '', 5, 5, 1,[]);
+    this.model = new Bill( '', '', [], 0, 0, 0);
   }
 
   resetItem(){
@@ -77,7 +62,7 @@ export class BillNewComponent implements OnInit {
   }
 
   newBill(){
-    this.model = new Bill(  0, '', '', 5, 5, 1,[]);
+    this.model = new Bill( '', '', [], 0, 0, 0);
   }
 
   ngOnInit() {

@@ -1,17 +1,15 @@
 export class Item {
-  
+  id: string;
   desc: string;
   weight: number;
+  type: number;
   quantity: number;
-  carat: number;
-  makingCharge: number;
-  
+  unitCost: number;  
   constructor(
 	  desc: string,
 	  weight: number,
+    type: number,
 	  quantity: number,
-	  carat: number,
-	  makingCharge: number
+	  unitCost: number
   ){  }
-
 }

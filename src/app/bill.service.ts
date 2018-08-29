@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
-
 import { Bill } from './bill';
 import { MessageService } from './message.service';
 
@@ -14,7 +12,7 @@ const httpOptions = {
 @Injectable({ providedIn: 'root' })
 export class BillService {
 
-  private billsUrl = 'api/bills';  // URL to web api
+  private billsUrl = 'http://localhost:8080/bill';  // URL to web api
 
   constructor(
     private http: HttpClient,
@@ -30,7 +28,7 @@ export class BillService {
   }
 
   /** GET Bill by id. Return `undefined` when id not found */
-  getBillNo404<Data>(id: number): Observable<Bill> {
+  getBillNo404<Data>(id: string): Observable<Bill> {
     const url = `${this.billsUrl}/?id=${id}`;
     return this.http.get<Bill[]>(url)
       .pipe(
@@ -44,7 +42,7 @@ export class BillService {
   }
 
   /** GET Bill by id. Will 404 if id not found */
-  getBill(id: number): Observable<Bill> {
+  getBill(id: string): Observable<Bill> {
     const url = `${this.billsUrl}/${id}`;
     console.log('inside bill service  url : '+url);
 
@@ -75,7 +73,7 @@ export class BillService {
   /** POST: add a new Bill to the server */
   addBill (bill: Bill): Observable<Bill> {
       return this.http.post<Bill>(this.billsUrl, bill, httpOptions).pipe(
-        tap((bill: Bill) => this.log(`added Bill w/ id=${bill.id},   fullName=${bill.fullName} `)),
+        tap((bill: Bill) => this.log(`added Bill w/ id=${bill.id},   buyerName=${bill.buyerName} `)),
         catchError(this.handleError<Bill>('addBill'))
     );
   }

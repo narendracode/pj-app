@@ -1,23 +1,20 @@
 import {Item} from './item';
 
 export class Bill {
-
-	  id: number;
-	  desc: string;
-	  fullName: string;
-	  totalAmount: number;
+	  id: string;
+	  buyerId: string;
+	  buyerName: string;
+	  items: Item[];
 	  discount: number;
 	  tax: number;
-	  items: Item[];
-
+	  status: number;
+	  amountPaid: number;
   constructor(
-	  id: number,
-	  desc: string,
-	  fullName: string,
-	  totalAmount: number,
+	  buyerId: string,
+	  buyerName: string,
+	  items: Item[],
 	  discount: number,
 	  tax: number,
-	  items: Item[]
+	  amountPaid: number
   ){  }
-
 }

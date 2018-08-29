@@ -31,7 +31,7 @@ export class BillEditComponent implements OnInit {
   }
 
   getBill(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
+    const id = this.route.snapshot.paramMap.get('id');
     this.billService.getBill(id)
       .subscribe(bill => {
       						console.log('got the bill with id :'+id);
@@ -49,13 +49,7 @@ export class BillEditComponent implements OnInit {
   onSubmit() { 
     //this.submitted = true; 
     
-    console.log('Bill Details from on Submit '+ this.model.fullName + ' , ' +
-                                this.model.desc + ' , ' + 
-                                this.model.discount +  '  , ' + 
-                                this.model.id +  '  , ' +
-                                this.model.tax +  '  , ' +
-                                this.model.totalAmount
-                );
+
     
    this.save();
 
@@ -82,7 +76,7 @@ export class BillEditComponent implements OnInit {
   }
 
   resetModel(){
-    this.model = new Bill(  0, '', '', 5, 5, 1,[]);
+    this.model = new Bill( '', '', [], 0, 0, 0);
   }
 
   resetItem(){

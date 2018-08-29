@@ -13,19 +13,13 @@
 
 	        	<div class="col-md-6">
 	             	<mat-form-field>
-	              	<input [(ngModel)]="model.fullName" name="fullName" matInput placeholder="Full Name" #fullName>
+	              	<input [(ngModel)]="model.buyerName" name="buyerName" matInput placeholder="Buyer Name" #buyerName>
 	            	</mat-form-field>
 	        	</div>
 
 	        	<div class="col-md-6">
 	             	<mat-form-field>
-	              	<input [(ngModel)]="model.desc" name="desc" matInput placeholder="Bill Description" #billDesc>
-	            	</mat-form-field>
-	        	</div>
-
-	        	<div class="col-md-6">
-	             	<mat-form-field>
-	              	<input [(ngModel)]="model.totalAmount" name="totalAmount" matInput placeholder="Total Amount" #billAmount>
+	              	<input [(ngModel)]="model.amountPaid" name="amountPaid" matInput placeholder="Amount Paid" #amountPaid>
 	            	</mat-form-field>
 	        	</div>
 
@@ -47,17 +41,14 @@
 	          <mat-card class="item-card" >
 	            <mat-card-header>
 	              <mat-card-title>{{item.desc | uppercase }}</mat-card-title>
-	              <mat-card-subtitle>{{item.carat}} Carat, {{item.weight}} grams</mat-card-subtitle>
+	              <mat-card-subtitle>{{item.type}} , {{item.weight}} grams</mat-card-subtitle>
 	            </mat-card-header>
 	            <mat-card-content>
 	              <div>
 	                Quantity : {{item.quantity}}
 	              </div>
 	              <div>
-	                Making Charge : {{item.makingCharge}}
-	              </div>
-	              <div>
-	                Total Amount : {{item.totalAmount}}
+	                Unit Cost: {{item.unitCost}}
 	              </div>
 	            </mat-card-content>
 	            <mat-card-actions>
