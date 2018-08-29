@@ -10,25 +10,13 @@
       <div class="row"> <!-- form fields start -->
           <div class="col-md-6">
           	<mat-form-field>
-              	<input [(ngModel)]="model.id" name="id" matInput placeholder="Bill Id" #billId>
+              	<input [(ngModel)]="model.buyerId" name="buyerId" matInput placeholder="Buyer Id" #buyerId>
             	</mat-form-field>
         	</div>
 
         	<div class="col-md-6">
              	<mat-form-field>
-              	<input [(ngModel)]="model.fullName" name="fullName" matInput placeholder="Full Name" #fullName>
-            	</mat-form-field>
-        	</div>
-
-        	<div class="col-md-6">
-             	<mat-form-field>
-              	<input [(ngModel)]="model.desc" name="desc" matInput placeholder="Bill Description" #billDesc>
-            	</mat-form-field>
-        	</div>
-
-        	<div class="col-md-6">
-             	<mat-form-field>
-              	<input [(ngModel)]="model.totalAmount" name="totalAmount" matInput placeholder="Total Amount" #billAmount>
+              	<input [(ngModel)]="model.buyerName" name="buyerName" matInput placeholder="Buyer Name" #buyerName>
             	</mat-form-field>
         	</div>
 
@@ -43,24 +31,26 @@
               	<input [(ngModel)]="model.tax" name="tax" matInput placeholder="Tax" #tax>
             	</mat-form-field>
         	</div>
+          <div class="col-md-6">
+              <mat-form-field>
+                <input [(ngModel)]="model.amountPaid" name="amountPaid" matInput placeholder="amountPaid" #amountPaid>
+              </mat-form-field>
+          </div>
       </div><!-- form fields end -->
 
       <div class="row" *ngFor="let item of items">
        <div class="col-md-12">
           <mat-card class="item-card" >
             <mat-card-header>
-              <mat-card-title>{{item.desc | uppercase }}</mat-card-title>
-              <mat-card-subtitle>{{item.carat}} Carat, {{item.weight}} grams</mat-card-subtitle>
+              <mat-card-title>{{item.desc }}</mat-card-title>
+              <mat-card-subtitle> {{item.weight}} Grams</mat-card-subtitle>
             </mat-card-header>
             <mat-card-content>
               <div>
                 Quantity : {{item.quantity}}
               </div>
               <div>
-                Making Charge : {{item.makingCharge}}
-              </div>
-              <div>
-                Total Amount : {{item.totalAmount}}
+                Unit Cost : {{item.unitCost}}
               </div>
             </mat-card-content>
             <mat-card-actions>
@@ -69,7 +59,6 @@
           </mat-card>
         </div>
       </div>
-
 
       <div class="row">
         <div class="col-sm-12">
@@ -96,13 +85,13 @@
 
         <div class="col-md-6">
               <mat-form-field>
-                <input [(ngModel)]="item.carat" name="itemCarat" matInput placeholder="Carat" #itemCarat>
+                <input [(ngModel)]="item.type" name="itemType" matInput placeholder="Type" #itemType>
               </mat-form-field>
         </div>
 
         <div class="col-md-6">
               <mat-form-field>
-                <input [(ngModel)]="item.makingCharge" name="itemMakingCharge" matInput placeholder="Making Charge" #itemQuantity>
+                <input [(ngModel)]="item.unitCost" name="unitCost" matInput placeholder="Unit Cost" #unitCost>
               </mat-form-field>
         </div>
       </div>
