@@ -32,6 +32,8 @@ import { MatDividerModule }               from '@angular/material/divider';
 import { MatExpansionModule }             from '@angular/material/expansion';
 import { MatAutocompleteModule }          from '@angular/material/autocomplete';
 import { MatTableModule}                  from '@angular/material/table';
+import { ReactiveFormsModule }            from '@angular/forms';
+
 
 import { HeaderComponent }                from './header/header.component';
 import { FooterComponent }                from './footer/footer.component';
@@ -44,14 +46,16 @@ import { BuyerDetailComponent } from './buyer-detail/buyer-detail.component';
 import { BuyerEditComponent } from './buyer-edit/buyer-edit.component';
 
 
+import { FormBuilder  } from '@angular/forms';
+import { FormGroup  } from '@angular/forms';
+
+
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-
-
     BrowserModule,
     BrowserAnimationsModule,
     MatToolbarModule,
@@ -74,7 +78,7 @@ import { BuyerEditComponent } from './buyer-edit/buyer-edit.component';
     MatExpansionModule,
     MatAutocompleteModule,
     MatTableModule,
-
+    ReactiveFormsModule
 
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
@@ -82,7 +86,7 @@ import { BuyerEditComponent } from './buyer-edit/buyer-edit.component';
    // HttpClientInMemoryWebApiModule.forRoot(
      // InMemoryDataService, { dataEncapsulation: false }
     //)
-    
+ 
   ],
   declarations: [
     AppComponent,

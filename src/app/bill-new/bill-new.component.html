@@ -6,7 +6,7 @@
 	    </div>
     </div>
 
-    <form (ngSubmit)="onSubmit()" #newBillForm="ngForm">
+    <form (ngSubmit)="onSubmit()" #newBillForm="ngForm" >
       <div class="row"> <!-- form fields start -->
           <div class="col-md-6">
           	<mat-form-field>
@@ -14,11 +14,20 @@
             	</mat-form-field>
         	</div>
 
-        	<div class="col-md-6">
-             	<mat-form-field>
-              	<input [(ngModel)]="model.buyerName" name="buyerName" matInput placeholder="Buyer Name" #buyerName>
-            	</mat-form-field>
-        	</div>
+          <div class="col-md-6">
+              <mat-form-field [formGroup]="buyerForm">
+                <input type="text" matInput placeholder="Buyer Name" formControlName="buyerGroup" [matAutocomplete]="autoGroup">
+                  <mat-autocomplete #autoGroup="matAutocomplete" >
+                    <mat-optgroup *ngFor="let group of buyerGroupOptions | async" [label]="group.letter">
+                      <mat-option *ngFor="let name of group.names" [value]="name.name" (onSelectionChange)="onBuyerSelect(name)">
+                        {{name.name}}
+                      </mat-option>
+                  </mat-optgroup>
+                </mat-autocomplete>
+              </mat-form-field>
+          </div>
+
+
 
         	<div class="col-md-6">
              	<mat-form-field>
