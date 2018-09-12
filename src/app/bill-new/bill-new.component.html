@@ -8,14 +8,15 @@
 
     <form (ngSubmit)="onSubmit()" #newBillForm="ngForm" >
       <div class="row"> <!-- form fields start -->
+          <!--
           <div class="col-md-6">
           	<mat-form-field>
               	<input [(ngModel)]="model.buyerId" name="buyerId" matInput placeholder="Buyer Id" #buyerId>
             	</mat-form-field>
-        	</div>
+        	</div>-->
 
           <div class="col-md-6">
-              <mat-form-field [formGroup]="buyerForm">
+              <mat-form-field [formGroup]="buyerForm" class="width-full">
                 <input type="text" matInput placeholder="Buyer Name" formControlName="buyerGroup" [matAutocomplete]="autoGroup">
                   <mat-autocomplete #autoGroup="matAutocomplete" >
                     <mat-optgroup *ngFor="let group of buyerGroupOptions | async" [label]="group.letter">
@@ -29,19 +30,19 @@
 
 
 
-        	<div class="col-md-6">
-             	<mat-form-field>
+        	<div class="col-md-6" >
+             	<mat-form-field class="width-full">
               	<input [(ngModel)]="model.discount" name="discount" matInput placeholder="Discount" #discount>
             	</mat-form-field>
         	</div>
 
-        	<div class="col-md-6">
-             	<mat-form-field>
+        	<div class="col-md-6" >
+             	<mat-form-field class="width-full">
               	<input [(ngModel)]="model.tax" name="tax" matInput placeholder="Tax" #tax>
             	</mat-form-field>
         	</div>
           <div class="col-md-6">
-              <mat-form-field>
+              <mat-form-field class="width-full"> 
                 <input [(ngModel)]="model.amountPaid" name="amountPaid" matInput placeholder="amountPaid" #amountPaid>
               </mat-form-field>
           </div>
@@ -75,8 +76,9 @@
           <mat-divider></mat-divider>
         </div>
         <div class="col-md-6">
-              <mat-form-field>
-                <input [(ngModel)]="item.desc" name="itemDesc" matInput placeholder="Item Description" #itemDesc>
+              <mat-form-field class="width-full">
+                <textarea [(ngModel)]="item.desc" name="itemDesc" matInput placeholder="Item Description" #itemDesc> </textarea>
+
               </mat-form-field>
         </div>
 

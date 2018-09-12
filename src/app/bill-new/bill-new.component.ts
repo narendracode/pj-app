@@ -3,19 +3,13 @@ import { Component, OnInit } from '@angular/core';
 import { Bill } from '../bill';
 import { Item } from '../item';
 import { BillService } from '../bill.service';
+import { BuyerService } from '../buyer.service';
 import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { iBuyer } from '../ibuyer';
+import { iBuyerGroup } from '../iBuyerGroup';
 
-export interface Buyer{
-  name: string,
-  id  : string
-}
-
-export interface BuyerGroup {
-  letter: string;
-  names: Buyer[];
-}
 
 export const _filter = (opt: string[], value: string): string[] => {
   const filterValue = value.toLowerCase();
@@ -23,7 +17,7 @@ export const _filter = (opt: string[], value: string): string[] => {
   return opt.filter(item => item.toLowerCase().indexOf(filterValue) === 0);
 };
 
-export const _filterBuyer = (opt: Buyer[], value: string): Buyer[] => {
+export const _filterBuyer = (opt: iBuyer[], value: string): iBuyer[] => {
   if(typeof value === 'string'){
     return opt.filter(function(buyer){
       return buyer.name.toLowerCase().indexOf(value.toLowerCase()) > -1;
@@ -46,12 +40,13 @@ export class BillNewComponent implements OnInit {
     buyerGroup: '',
   });
 
-  constructor(private billService: BillService, private fb: FormBuilder) { }
+  constructor(private billService: BillService, private buyerService: BuyerService, private fb: FormBuilder) { }
 
   model = new Bill( '', '', [], 0, 0, 0);
   items = new Array<Item>();
   item = new Item('',0,1,24,0);
-  
+  buyerGroups: iBuyerGroup[];
+
   submitted = false;
   
   onSubmit() { 
@@ -103,7 +98,7 @@ export class BillNewComponent implements OnInit {
 
 
 
-  onBuyerSelect(buyer: Buyer){
+  onBuyerSelect(buyer: iBuyer){
     console.log('selected Buyer is : '+JSON.stringify(buyer));
     this.model.buyerName = buyer.name;
     this.model.buyerId = buyer.id;
@@ -111,6 +106,8 @@ export class BillNewComponent implements OnInit {
 
 
   ngOnInit() {
+    this.getBuyerGroups();
+    
     this.buyerGroupOptions = this.buyerForm.get('buyerGroup')!.valueChanges
       .pipe(
         startWith(''),
@@ -119,9 +116,9 @@ export class BillNewComponent implements OnInit {
   }
 
 
-  buyerGroupOptions: Observable<BuyerGroup[]>;
+  buyerGroupOptions: Observable<iBuyerGroup[]>;
 
-  private _filterBuyerGroup(value: string): BuyerGroup[] {
+  private _filterBuyerGroup(value: string): iBuyerGroup[] {
     if (value) {
       return this.buyerGroups
         .map(group => ({letter: group.letter, names: _filterBuyer(group.names, value)}))
@@ -131,27 +128,10 @@ export class BillNewComponent implements OnInit {
     return this.buyerGroups;
   }
 
- 
-
-  buyerGroups: BuyerGroup[] = [
-  {
-    letter: 'A',
-    names: [ { name:'Alabama', id: 'AL'}, {name:'Alaska',id:'ALS'}, {name:'Arizona',id:'ARZ'}, {name:'Arkansas',id:'ARK'}]
-  }, {
-    letter: 'C',
-    names: [ { name:'California', id: 'CAL'}, { name:'Colorado', id: 'COL'}, { name:'Connecticut', id: 'CON'}]
-  }, {
-    letter: 'D',
-    names: [{ name:'Delaware', id: 'DEL'}]
-  }, {
-    letter: 'F',
-    names: [{ name:'Florida', id: 'FL'}]
-  }, {
-    letter: 'G',
-    names: [{ name:'Georgia', id: 'GA'}]
+  getBuyerGroups(): void {
+    this.buyerService.getBuyerGroups()
+    .subscribe(buyerGroups => this.buyerGroups = buyerGroups);
   }
-  ];
 
-  
 
 }

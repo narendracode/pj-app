@@ -5,7 +5,12 @@ import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
 import { Buyer } from './buyer';
+import { Bill } from './bill';
+
 import { MessageService } from './message.service';
+
+import { iBuyerGroup } from './iBuyerGroup';
+
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -15,23 +20,23 @@ const httpOptions = {
 export class BuyerService {
 
   private buyerAPIUrl = 'http://localhost:8080/buyer';  // URL to web api
+  private billsUrl = 'http://localhost:8080/bill';  // URL to web api
 
   constructor(
     private http: HttpClient,
     private messageService: MessageService) { }
 
   /** GET buyers from the server */
-  getBuyers (): Observable<Buyer[]> {
-    return this.http.get<Buyer[]>(this.buyerAPIUrl)
+  getBuyerGroups (): Observable<iBuyerGroup[]> {
+    return this.http.get<iBuyerGroup[]>(this.buyerAPIUrl+'/sorted')
       .pipe(
-        tap(buyers =>  { 
-            this.log('fetched buyers');
+        tap(buyerGroups =>  { 
+            console.log('fetched buyer groups......');
+            this.log('fetched buyerGroups');
           }),
-        catchError(this.handleError('getbuyers', []))
+        catchError(this.handleError('getbuyerGroups', []))
       );
   }
-
-
 
   addBuyer (buyer: Buyer): Observable<Buyer> {
       return this.http.post<Buyer>(this.buyerAPIUrl, buyer, httpOptions).pipe(
@@ -72,6 +77,14 @@ export class BuyerService {
     );
   }
 
+
+  getBuyers (): Observable<Buyer[]> {
+    return this.http.get<Buyer[]>(this.buyerAPIUrl)
+      .pipe(
+        tap(bills => this.log('fetched buyers......')),
+        catchError(this.handleError('getBuyers', []))
+      );
+  }
 
   /**
    * Handle Http operation that failed.
