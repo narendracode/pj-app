@@ -6,7 +6,7 @@ import { BillService } from '../bill.service';
 import { BuyerService } from '../buyer.service';
 import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup , FormControl, Validators} from '@angular/forms';
 import { iBuyer } from '../ibuyer';
 import { iBuyerGroup } from '../iBuyerGroup';
 
@@ -40,7 +40,9 @@ export class BillNewComponent implements OnInit {
     buyerGroup: '',
   });
 
-  constructor(private billService: BillService, private buyerService: BuyerService, private fb: FormBuilder) { }
+  constructor(private billService: BillService, private buyerService: BuyerService, private fb: FormBuilder) { 
+
+  }
 
   model = new Bill( '', '', [], 0, 0, 0);
   items = new Array<Item>();

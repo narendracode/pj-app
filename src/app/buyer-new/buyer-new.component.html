@@ -6,41 +6,44 @@
 	    </div>
     </div>
 
-    <form (ngSubmit)="onSubmit()" #newBuyerForm="ngForm">
+    <form (ngSubmit)="onSubmit()" #newBuyerForm="ngForm" [formGroup]="newBuyerRegisterForm">
       <div class="row"> <!-- form fields start -->
-        	<div class="col-md-6">
-             	<mat-form-field>
-              	<input [(ngModel)]="model.firstName" name="firstName" matInput placeholder="First Name" #firstName>
+        	<div class="col-md-6" *ngIf="validation_messages">
+              <mat-form-field>
+              	<input  name="firstName" matInput placeholder="First Name"  formControlName="firstName" required>
+                <mat-error *ngFor="let validation of validation_messages.firstName">
+                  <mat-error class="error-message" *ngIf="newBuyerRegisterForm.get('firstName').hasError(validation.type) && (newBuyerRegisterForm.get('firstName').dirty || newBuyerRegisterForm.get('firstName').touched)">{{validation.message}}</mat-error>
+                </mat-error>
             	</mat-form-field>
         	</div>
           <div class="col-md-6">
               <mat-form-field>
-                <input [(ngModel)]="model.middleName" name="middleName" matInput placeholder="Middle Name" #middleName>
+                <input name="middleName" matInput placeholder="Middle Name" #middleName>
               </mat-form-field>
           </div>
           <div class="col-md-6">
               <mat-form-field>
-                <input [(ngModel)]="model.lastName" name="lastName" matInput placeholder="Last Name" #lastName>
+                <input  name="lastName" matInput placeholder="Last Name" #lastName>
               </mat-form-field>
           </div>
         	<div class="col-md-6">
              	<mat-form-field>
-              	<input [(ngModel)]="model.company" name="company" matInput placeholder="Company" #company>
+              	<input  name="company" matInput placeholder="Company" #company>
             	</mat-form-field>
         	</div>
           <div class="col-md-6">
               <mat-form-field>
-                <input [(ngModel)]="model.address" name="address" matInput placeholder="Address" #address>
+                <input  name="address" matInput placeholder="Address" #address>
               </mat-form-field>
           </div>
           <div class="col-md-6">
               <mat-form-field>
-                <input [(ngModel)]="model.phone" name="phone" matInput placeholder="Phone" #phone>
+                <input  name="phone" matInput placeholder="Phone" #phone>
               </mat-form-field>
           </div>
           <div class="col-md-6">
               <mat-form-field>
-                <input [(ngModel)]="model.email" name="email" matInput placeholder="Email" #email>
+                <input  name="email" matInput placeholder="Email" #email>
               </mat-form-field>
           </div>
       </div><!-- form fields end -->

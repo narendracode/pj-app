@@ -49,7 +49,6 @@ import { BuyerEditComponent } from './buyer-edit/buyer-edit.component';
 import { FormBuilder  } from '@angular/forms';
 import { FormGroup  } from '@angular/forms';
 
-
 @NgModule({
   imports: [
     BrowserModule,

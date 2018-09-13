@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { Buyer } from '../buyer';
 import { BuyerService } from '../buyer.service';
+import { FormBuilder, FormGroup , FormControl, Validators,NgForm,FormsModule} from '@angular/forms';
+import { patternValidator } from '../pattern-validator';
 
 @Component({
   selector: 'app-buyer-new',
@@ -9,11 +11,26 @@ import { BuyerService } from '../buyer.service';
   styleUrls: ['./buyer-new.component.scss']
 })
 export class BuyerNewComponent implements OnInit {
-  constructor(private buyerService: BuyerService) { }
+  constructor(private buyerService: BuyerService, private fb: FormBuilder) {
+    // To initialize FormGroup  
+    this.newBuyerRegisterForm = this.fb.group({   
+      'firstName':new FormControl('', Validators.compose([
+         Validators.required
+      ])) 
+    }); 
+
+  }
   model = new Buyer('','','','','','','');
+  newBuyerRegisterForm: FormGroup;
+
+  validation_messages = {
+    firstName : [
+      { type: 'required', message: 'First name is required' }
+    ]
+  };
 
   ngOnInit() {
-  
+   
   }
 
   onSubmit() { 
