@@ -21,15 +21,15 @@
     <div class="col-md-6" *ngFor="let bill of bills">
       <mat-card class="bill-card" >
         <mat-card-header>
-          <mat-card-title>{{bill.fullName}}</mat-card-title>
-          <mat-card-subtitle>7th July 2018</mat-card-subtitle>
+          <mat-card-title>{{bill.buyerName | uppercase}}</mat-card-title>
+          <mat-card-subtitle>{{bill.createdAt | date:'medium'}}</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
-          <p>
-            Sample lorem ipsum purchase description...
-          </p>
           <div>
             Bill id : {{bill.id}}
+          </div>
+          <div>
+           Last updated: {{bill.updatedAt | date:'medium'}}
           </div>
         </mat-card-content>
         <mat-card-actions>

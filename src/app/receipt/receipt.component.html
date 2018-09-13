@@ -36,33 +36,33 @@
 			<div class="date">
 				{{today | date : format : M/d/yy }}
 			</div>
-			<div class="invoiceId">
-				Invoice Id : 12345
+			<div class="invoiceId" *ngIf="bill">
+				Invoice Id : {{bill.id}}
 			</div>
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-12 buyer">
+		<div class="col-md-12 buyer" *ngIf="bill">
 			<div class="buyer-header">
 				Buyer
 			</div>
 			<div class="buyer-name">
-				Tilak Soni
+				{{bill.buyerName}}
 			</div>
-			<div class="buyer-company-name">
-				Tilak and Company
+			<div class="buyer-company-name" *ngIf="buyer">
+				{{buyer.company}}
 			</div>
-			<div class="buyer-address">
-				Korba, Chattisgarh
+			<div class="buyer-address" *ngIf="buyer">
+				{{buyer.address}}
 			</div>
-			<div class="buyer-phone-number">
-				+91 9200012345
+			<div class="buyer-phone-number" *ngIf="buyer">
+				{{buyer.phone}}
 			</div>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-md-12">
-			<table class="table">
+			<table class="table" *ngIf="bill">
 				<thead class="table-header">
 					<tr>
 						<th scope="col">#</th>
@@ -72,38 +72,17 @@
 						<th scope="col">Unit Cost</th>
 					</tr>
 				</thead>
-				<tbody class="table-content">
+				<tbody class="table-content" *ngFor="let item of bill.items">
 					<tr>
 						<th scope="row">1</th>
-						<td class="left strong">Gold Necklace</td>
-						<td class="right">15 grams</td>
-						<td class="center">1</td>
-						<td class="right">INR 20,000</td>
-					</tr>
-					<tr>
-						<th scope="row">2</th>
-						<td class="left strong">Bangle</td>
-						<td class="right">20 grams</td>
-						<td class="center">1</td>
-						<td class="right">INR 30,000</td>
-					</tr>
-					<tr>
-						<th scope="row">3</th>
-						<td class="left strong">Ear Piece</td>
-						<td class="right">10 grams</td>
-						<td class="center">1</td>
-						<td class="right">INR 10,000</td>
-					</tr>
-					<tr>
-						<th scope="row">4</th>
-						<td class="left strong">Bindia</td>
-						<td class="right">8 grams</td>
-						<td class="center">1</td>
-						<td class="right">INR 8,000</td>
+						<td class="left strong">{{item.desc}}</td>
+						<td class="right">{{item.weight}} Grams</td>
+						<td class="center">{{item.quantity}}</td>
+						<td class="right">INR {{item.unitCost}}</td>
 					</tr>
 				</tbody>
 			</table>
-			<div class="row">
+			<div class="row" *ngIf="bill">
 				<div class="col-lg-4 col-sm-5">
 				</div>
 				<div class="col-lg-4 col-sm-5 ml-auto">
@@ -113,26 +92,26 @@
 								<td class="invoice-item-title">
 									<strong>Subtotal </strong>
 								</td>
-								<td class="invoice-item-desc">INR 48,000</td>
+								<td class="invoice-item-desc">INR {{bill.subTotal}}</td>
 							</tr>
 							<tr>
 								<td class="invoice-item-title">
 									<strong>Discount</strong>
 								</td>
-								<td class="invoice-item-desc">INR 500</td>
+								<td class="invoice-item-desc">INR {{bill.discount}}</td>
 							</tr>
 							<tr>
 								<td class="invoice-item-title">
-									<strong>VAT (3%) </strong>
+									<strong>Tax</strong>
 								</td>
-								<td class="invoice-item-desc">INR 1440</td>
+								<td class="invoice-item-desc">{{bill.tax}}%</td>
 							</tr>
 							<tr>
 								<td class="invoice-item-title">
 									<strong>Total </strong>
 								</td>
 								<td class="invoice-item-desc">
-									<strong>INR 48,940</strong>
+									<strong>INR {{bill.total}}</strong>
 								</td>
 							</tr>
 						</tbody>

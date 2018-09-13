@@ -1,6 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , Input} from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import printJS from 'print-js'
 import { Location } from '@angular/common';
+import { Bill }         from '../bill';
+import { Buyer } from '../buyer';
+import { BillService }  from '../bill.service';
+import { BuyerService }  from '../buyer.service';
 
 @Component({
   selector: 'app-receipt',
@@ -8,13 +13,35 @@ import { Location } from '@angular/common';
   styleUrls: ['./receipt.component.scss']
 })
 export class ReceiptComponent implements OnInit {
+  @Input() bill: Bill;
   today =  new Date();
-  
+  buyer: Buyer;
+
   constructor(
+    private route: ActivatedRoute,
+    private billService: BillService,
+    private buyerService: BuyerService,
   	private location: Location
   ) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.getBill();
+  }
+
+  getBill(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+    this.billService.getBill(id)
+      .subscribe(bill => {
+        this.bill = bill;
+        this.getBuyer(this.bill.buyerId);
+    });
+  }
+
+  getBuyer(buyerId): void {
+    this.buyerService.getBuyer(buyerId)
+      .subscribe(buyer => {
+                  this.buyer = buyer;
+                  });
   }
 
   print(){

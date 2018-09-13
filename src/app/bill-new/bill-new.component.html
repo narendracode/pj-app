@@ -8,13 +8,6 @@
 
     <form (ngSubmit)="onSubmit()" #newBillForm="ngForm" >
       <div class="row"> <!-- form fields start -->
-          <!--
-          <div class="col-md-6">
-          	<mat-form-field>
-              	<input [(ngModel)]="model.buyerId" name="buyerId" matInput placeholder="Buyer Id" #buyerId>
-            	</mat-form-field>
-        	</div>-->
-
           <div class="col-md-6">
               <mat-form-field [formGroup]="buyerForm" class="width-full">
                 <input type="text" matInput placeholder="Buyer Name" formControlName="buyerGroup" [matAutocomplete]="autoGroup">
@@ -96,9 +89,17 @@
 
         <div class="col-md-6">
               <mat-form-field>
-                <input [(ngModel)]="item.type" name="itemType" matInput placeholder="Type" #itemType>
+               <!-- <input [(ngModel)]="item.type" name="itemType" matInput placeholder="Type" #itemType> -->
+                  <mat-select [(value)]="selected" [(ngModel)]="item.type" name="itemType" matInput placeholder="Type" #itemType>
+                    <mat-option value="1">Gold</mat-option>
+                    <mat-option value="2">Silver</mat-option>
+                    <mat-option value="0">Other</mat-option>
+                  </mat-select>
               </mat-form-field>
         </div>
+
+
+
 
         <div class="col-md-6">
               <mat-form-field>

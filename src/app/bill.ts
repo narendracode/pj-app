@@ -8,7 +8,11 @@ export class Bill {
 	  discount: number;
 	  tax: number;
 	  status: number;
+	  total: number;
+	  subTotal: number;
 	  amountPaid: number;
+	  createdAt: Date;
+	  updatedAt: Date;
   constructor(
 	  buyerId: string,
 	  buyerName: string,
