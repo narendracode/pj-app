@@ -6,44 +6,56 @@
 	    </div>
     </div>
 
-    <form (ngSubmit)="onSubmit()" #newBuyerForm="ngForm" [formGroup]="newBuyerRegisterForm">
+    <form (ngSubmit)="onSubmit(formDirective);formDirective.resetForm()"  [formGroup]="newBuyerRegisterForm" #formDirective="ngForm" autocomplete="false">
       <div class="row"> <!-- form fields start -->
         	<div class="col-md-6" *ngIf="validation_messages">
-              <mat-form-field>
-              	<input  name="firstName" matInput placeholder="First Name"  formControlName="firstName" required>
+              <mat-form-field class="width-full">
+              	<input   autocomplete="off" name="firstName" matInput placeholder="First Name"  formControlName="firstName" required>
                 <mat-error *ngFor="let validation of validation_messages.firstName">
                   <mat-error class="error-message" *ngIf="newBuyerRegisterForm.get('firstName').hasError(validation.type) && (newBuyerRegisterForm.get('firstName').dirty || newBuyerRegisterForm.get('firstName').touched)">{{validation.message}}</mat-error>
                 </mat-error>
             	</mat-form-field>
         	</div>
           <div class="col-md-6">
-              <mat-form-field>
-                <input name="middleName" matInput placeholder="Middle Name" #middleName>
+              <mat-form-field class="width-full">
+               <input  autocomplete="off" name="middleName" matInput placeholder="Middle Name"  formControlName="middleName" >
               </mat-form-field>
           </div>
           <div class="col-md-6">
-              <mat-form-field>
-                <input  name="lastName" matInput placeholder="Last Name" #lastName>
+              <mat-form-field class="width-full">
+                <input  autocomplete="off" name="lastName" matInput placeholder="Last Name"  formControlName="lastName" required>
+                <mat-error *ngFor="let validation of validation_messages.lastName">
+                  <mat-error class="error-message" *ngIf="newBuyerRegisterForm.get('lastName').hasError(validation.type) && (newBuyerRegisterForm.get('lastName').dirty || newBuyerRegisterForm.get('lastName').touched)">{{validation.message}}</mat-error>
+                </mat-error>
               </mat-form-field>
           </div>
         	<div class="col-md-6">
-             	<mat-form-field>
-              	<input  name="company" matInput placeholder="Company" #company>
+             	<mat-form-field class="width-full">
+              	<input autocomplete="off"  name="company" matInput placeholder="Company" formControlName="company">
             	</mat-form-field>
         	</div>
           <div class="col-md-6">
-              <mat-form-field>
-                <input  name="address" matInput placeholder="Address" #address>
+              <mat-form-field class="width-full">
+                <textarea autocomplete="off" name="address" matInput placeholder="Address"  formControlName="address" required> </textarea>
+                <mat-error *ngFor="let validation of validation_messages.address">
+                  <mat-error class="error-message" *ngIf="newBuyerRegisterForm.get('address').hasError(validation.type) && (newBuyerRegisterForm.get('address').dirty || newBuyerRegisterForm.get('address').touched)">{{validation.message}}</mat-error>
+                </mat-error>
               </mat-form-field>
           </div>
           <div class="col-md-6">
-              <mat-form-field>
-                <input  name="phone" matInput placeholder="Phone" #phone>
+              <mat-form-field class="width-full">
+                <input autocomplete="off" matInput type="email" placeholder="Email" formControlName="email" required >
+                <mat-error *ngFor="let validation of validation_messages.email">
+                  <mat-error class="error-message" *ngIf="newBuyerRegisterForm.get('email').hasError(validation.type) && (newBuyerRegisterForm.get('email').dirty || newBuyerRegisterForm.get('email').touched)">{{validation.message}}</mat-error>
+                </mat-error>
               </mat-form-field>
           </div>
           <div class="col-md-6">
-              <mat-form-field>
-                <input  name="email" matInput placeholder="Email" #email>
+              <mat-form-field class="width-full">
+                <input autocomplete="off" name="phone" matInput placeholder="Phone"  formControlName="phone" required>
+                <mat-error *ngFor="let validation of validation_messages.phone">
+                  <mat-error class="error-message" *ngIf="newBuyerRegisterForm.get('phone').hasError(validation.type) && (newBuyerRegisterForm.get('phone').dirty || newBuyerRegisterForm.get('phone').touched)">{{validation.message}}</mat-error>
+                </mat-error>
               </mat-form-field>
           </div>
       </div><!-- form fields end -->
@@ -52,7 +64,7 @@
     <mat-divider></mat-divider>
 	  <div class="row margin-top-10"><!-- buttons start -->
 	    <div class="col-md-2">
-	        <button type="submit" mat-raised-button color="primary" >
+	        <button type="submit" mat-raised-button color="primary" [disabled]="!newBuyerRegisterForm.valid">
 	          Save
 	        </button>
 	    </div>
