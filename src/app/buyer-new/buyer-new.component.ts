@@ -35,28 +35,18 @@ export class BuyerNewComponent implements OnInit {
          Validators.required
       ])),
       'phone'      : new FormControl('', Validators.compose([
-         Validators.required
+         Validators.required,
+         Validators.pattern('^[0-9]{10}$')
       ]))
      }); 
 
-  /*this.newBuyerRegisterForm.setValue({
-    'firstName' : this.model.firstName,
-    'email'     : this.model.email,
-    'middleName': this.model.middleName,
-    'lastName'  : this.model.lastName,
-    'company'   : this.model.company,
-    'address'   : this.model.address,
-    'phone'     : this.model.phone
-  });*/
-
-
-  this.newBuyerRegisterForm.controls['firstName' ].setValue('');
-  this.newBuyerRegisterForm.controls['email' ].setValue('');
-  this.newBuyerRegisterForm.controls['middleName' ].setValue('');
-  this.newBuyerRegisterForm.controls['lastName' ].setValue('');
-  this.newBuyerRegisterForm.controls['company' ].setValue('');
-  this.newBuyerRegisterForm.controls['address' ].setValue('');
-  this.newBuyerRegisterForm.controls['phone' ].setValue('');
+      this.newBuyerRegisterForm.controls['firstName' ].setValue('');
+      this.newBuyerRegisterForm.controls['email' ].setValue('');
+      this.newBuyerRegisterForm.controls['middleName' ].setValue('');
+      this.newBuyerRegisterForm.controls['lastName' ].setValue('');
+      this.newBuyerRegisterForm.controls['company' ].setValue('');
+      this.newBuyerRegisterForm.controls['address' ].setValue('');
+      this.newBuyerRegisterForm.controls['phone' ].setValue('');
 
   }
 
@@ -82,7 +72,8 @@ export class BuyerNewComponent implements OnInit {
       { type: 'required', message: 'Address is required' }
     ],
     phone : [
-      { type: 'required', message: 'Phone number is required' }
+      { type: 'required', message: 'Phone number is required' },
+      { type: 'pattern', message: 'Enter a valid phone number' }
     ]
   };
 
@@ -104,7 +95,6 @@ export class BuyerNewComponent implements OnInit {
       .subscribe(buyer => {
          this.reset();
       });
-     
   }//onSubmit
   
   reset(){
