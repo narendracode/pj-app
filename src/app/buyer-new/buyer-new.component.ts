@@ -4,6 +4,9 @@ import { BuyerService } from '../buyer.service';
 import { FormBuilder, FormGroup , FormControl, Validators,NgForm,FormsModule,FormGroupDirective} from '@angular/forms';
 import { patternValidator } from '../pattern-validator';
 import { AlertService } from '../alertservice';
+import { MatDialog } from '@angular/material';
+import { AlertDialogComponent } from '../alert-dialog/alert-dialog.component';
+
 
 @Component({
   selector: 'app-buyer-new',
@@ -15,7 +18,20 @@ export class BuyerNewComponent implements OnInit {
   newBuyerRegisterForm: FormGroup;
   @ViewChild(FormGroupDirective) myForm;
 
-  constructor(private buyerService: BuyerService, private fb: FormBuilder,private alertService: AlertService) {
+
+  unregister() {
+    let dialogRef = this.dialog.open(AlertDialogComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      // NOTE: The result can also be nothing if the user presses the `esc` key or clicks outside the dialog
+      if (result == 'confirm') {
+        console.log('Unregistered');
+      }
+    })
+  }
+
+
+
+  constructor(private buyerService: BuyerService, private fb: FormBuilder,private alertService: AlertService,private dialog: MatDialog) {
     // To initialize FormGroup  
     this.newBuyerRegisterForm = this.fb.group({   
       'firstName': new FormControl('', Validators.compose([
@@ -94,8 +110,15 @@ export class BuyerNewComponent implements OnInit {
       
       this.buyerService.addBuyer(this.model)
       .subscribe(buyer => {
-         this.alertService.success('User '+this.model.firstName+' '+this.model.lastName+' created successfully.');
-         this.reset();
+         //this.alertService.success('User '+this.model.firstName+' '+this.model.lastName+' created successfully.');
+          this.reset();
+          let dialogRef = this.dialog.open(AlertDialogComponent,{
+            data: {
+              type   : 'success',
+              title  : 'Success',
+              message: 'User created successfully.'
+            }
+          });
       }); 
   }//onSubmit
   
