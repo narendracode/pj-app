@@ -48,6 +48,8 @@ import { BuyerEditComponent } from './buyer-edit/buyer-edit.component';
 
 import { FormBuilder  } from '@angular/forms';
 import { FormGroup  } from '@angular/forms';
+import { AlertComponent } from './alert/alert.component';
+import { AlertService } from './alertservice';
 
 @NgModule({
   imports: [
@@ -103,7 +105,12 @@ import { FormGroup  } from '@angular/forms';
     BuyersComponent,
     BuyerNewComponent,
     BuyerDetailComponent,
-    BuyerEditComponent
+    BuyerEditComponent,
+    AlertComponent
+  ],
+  providers: [
+        // include alert service in app module providers
+        AlertService
   ],
   bootstrap: [ AppComponent ]
 })

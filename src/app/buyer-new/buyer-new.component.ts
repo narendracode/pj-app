@@ -3,6 +3,7 @@ import { Buyer } from '../buyer';
 import { BuyerService } from '../buyer.service';
 import { FormBuilder, FormGroup , FormControl, Validators,NgForm,FormsModule,FormGroupDirective} from '@angular/forms';
 import { patternValidator } from '../pattern-validator';
+import { AlertService } from '../alertservice';
 
 @Component({
   selector: 'app-buyer-new',
@@ -14,7 +15,7 @@ export class BuyerNewComponent implements OnInit {
   newBuyerRegisterForm: FormGroup;
   @ViewChild(FormGroupDirective) myForm;
 
-  constructor(private buyerService: BuyerService, private fb: FormBuilder) {
+  constructor(private buyerService: BuyerService, private fb: FormBuilder,private alertService: AlertService) {
     // To initialize FormGroup  
     this.newBuyerRegisterForm = this.fb.group({   
       'firstName': new FormControl('', Validators.compose([
@@ -93,8 +94,9 @@ export class BuyerNewComponent implements OnInit {
       
       this.buyerService.addBuyer(this.model)
       .subscribe(buyer => {
+         this.alertService.success('User '+this.model.firstName+' '+this.model.lastName+' created successfully.');
          this.reset();
-      });
+      }); 
   }//onSubmit
   
   reset(){
